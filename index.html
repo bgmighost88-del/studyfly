@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Fly - السفر الأكاديمي</title>
+    
+    <!-- الخط العربي: Almarai --><link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* الأنماط المخصصة للتصميم العصري */
+        :root {
+            --primary-blue: #021a30; /* أزرق داكن (الخلفية) */
+            --secondary-teal: #00d2b6; /* تيفاني / تركواز (التفاصيل والأيقونة) */
+            --dark-blue: #021a30;
+        }
+
+        body {
+            font-family: 'Almarai', sans-serif; /* استخدام الخط العربي العصري */
+            background-color: #ffffff; /* خلفية بيضاء نقية */
+        }
+        
+        /* قسم الهيدر العصري */
+        .header-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding-bottom: 8rem; 
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* الشكل المثلثي السفلي (موجة عصرية) */
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8rem;
+            background-color: white; 
+            clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%); 
+            z-index: 1;
+        }
+
+        .header-content {
+            z-index: 2;
+            position: relative;
+            padding-top: 5rem;
+            padding-bottom: 4rem;
+        }
+
+        /* زر الدعوة للعمل */
+        .btn-custom {
+            background-color: var(--secondary-teal);
+            border: none;
+            color: var(--dark-blue);
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 210, 182, 0.4);
+        }
+
+        .btn-custom:hover {
+            background-color: #00b099; 
+            box-shadow: 0 6px 20px rgba(0, 210, 182, 0.6);
+            transform: translateY(-2px);
+            color: var(--dark-blue);
+        }
+
+        /* أيقونة الطائرة العصرية الجديدة */
+        .plane-icon {
+            width: 80px; /* حجم أكبر قليلاً للطائرة */
+            height: 80px;
+            margin-inline-end: 15px;
+            transform: rotate(-30deg); /* دوران بزاوية لإظهار الإقلاع */
+            transition: transform 0.5s ease-in-out;
+            color: var(--secondary-teal); /* لون الطائرة الأساسي */
+        }
+
+        .header-section:hover .plane-icon {
+            transform: rotate(-35deg) scale(1.08); /* حركة طفيفة عند التمرير */
+        }
+        
+        /* تم إزالة الأنماط القديمة للـ SVG */
+        
+        /* قسم الميزات */
+        .feature-card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon-circle {
+            background-color: rgba(0, 210, 182, 0.1);
+            color: var(--secondary-teal);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* قسم الأهداف */
+        .goals-section {
+            background-color: #f7f9fb;
+        }
+        
+        /* قسم الكليات والتخصصات المحدث - أنماط الـ Tabs */
+        .nav-tabs .nav-link {
+            color: var(--dark-blue);
+            font-weight: bold;
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--secondary-teal);
+            background-color: transparent;
+            border-color: var(--secondary-teal);
+        }
+
+        .nav-tabs .nav-link:hover:not(.active) {
+            border-color: #eee;
+        }
+
+        .tab-content {
+            padding-top: 2rem;
+        }
+        
+        .specialization-card {
+            border: 1px solid #eee;
+            border-radius: 0.75rem;
+            transition: box-shadow 0.3s ease;
+            height: 100%; 
+        }
+
+        .specialization-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .spec-icon {
+            color: var(--secondary-teal);
+            font-size: 2rem;
+            margin-inline-end: 1rem;
+        }
+        
+        /* أنماط معرض الصور الخاص بكل دولة */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            height: 200px; /* تقليل الارتفاع قليلاً */
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(2, 26, 48, 0.85); /* خلفية داكنة شفافة */
+            color: white;
+            padding: 0.75rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+
+        /* تنسيق صورة العلم المضافة */
+        .flag-icon {
+            width: 24px; /* تحديد عرض العلم */
+            height: auto; /* الحفاظ على النسبة */
+            max-height: 20px; /* تحديد أقصى ارتفاع */
+            object-fit: cover; /* لضمان ملء المساحة */
+            margin-inline-end: 8px; /* هامش بجوار النص */
+            border-radius: 3px; /* حواف دائرية خفيفة */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* ظل خفيف */
+            display: inline-block; /* لضمان المحاذاة مع النص */
+            vertical-align: middle; /* محاذاة رأسية مع النص */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر وأيقونة الطائرة الجديدة --><header class="header-section">
+        <div class="container header-content text-center">
+            
+            <h1 class="display-3 fw-bold mb-4 d-flex align-items-center justify-content-center">
+                <!-- أيقونة الطائرة العصرية الجديدة (SVG) --><svg class="plane-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                    <!-- مسار الطائرة الواقعية --><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                </svg>
+                
+                Study Fly </h1>
+                <h2>السفر الأكاديمي</<h2>
+            <p class="lead text-white-50 mt-5 mb-5">
+              وجهتك الموثوقة للدراسة في الخارج، نساعدك في تسهيل إجراءات السفر والقبول الجامعي
+
+            </p>
+
+            <!-- زر الدعوة للعمل (Call to Action) --><a href="https://wa.me/966542032501?text=Hello!%20Anyone%20available%20to%20help%20%3F%20" class="btn btn-custom btn-lg">
+                <i class="fas fa-paper-plane me-2"></i> تواصل مع مستشارينا
+            </a>
+            
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي --><main class="container py-5">
+        
+        <!-- قسم الميزات الرئيسية (Features) --><section class="py-5">
+            <h2 class="text-center mb-5 fw-bold text-dark">لماذا تختار <span style="color: var(--secondary-teal);">Study Fly </span> ؟</h2>
+            <div class="row g-4">
+                
+                <!-- ميزة 1: التوجيه الأكاديمي --><div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle"><i class="fas fa-book-reader"></i></div>
+                        <h4 class="fw-bold text-dark">توجيه أكاديمي متكامل</h4>
+                        <p class="text-muted">نساعدك في اختيار التخصص والجامعة الأنسب لمستقبلك.</p>
+                    </div>
+                </div>
+
+                <!-- ميزة 2: تسهيل الإجراءات --><div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle"><i class="fas fa-passport"></i></div>
+                        <h4 class="fw-bold text-dark">تسهيل إجراءات القبول</h4>
+                        <p class="text-muted">نحن نعتني بكل تفاصيل القبول وتأشيرة السفر.</p>
+                    </div>
+                </div>
+
+                <!-- ميزة 3: دعم متواصل --><div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle"><i class="fas fa-headset"></i></div>
+                        <h4 class="fw-bold text-dark">دعم متواصل بعد السفر</h4>
+                        <p class="text-muted">نبقى على تواصل معك لضمان استقرارك ونجاحك.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الأهداف والرسالة (Goals) --><section class="goals-section py-5 my-5 rounded-4 shadow-sm">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2 text-center">
+                    <!-- أيقونة أو صورة معبرة --><i class="fas fa-graduation-cap display-1 mb-4" style="color: var(--secondary-teal);"></i>
+                </div>
+                <div class="col-md-6 order-md-1"style="padding-left: 5px;">
+                    <h3 class="fw-bold mb-3 text-dark">رسالتنا: بناء مستقبل مشرق</h3>
+                    <p class="lead text-muted">نؤمن بأن التعليم هو مفتاح التطور. هدفنا هو تذليل الصعاب أمام الطلاب العرب الطموحين لتحقيق أحلامهم الأكاديمية في بيئات دراسية ممتازة.</p>
+                    <ul class="list-unstyled mt-4 text-dark">
+                        <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--secondary-teal);"></i> توفير فرص تعليم عالية الجودة.</li>
+                        <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--secondary-teal);"></i> دعم مالي ولوجستي للطلاب.</li>
+                        <li><i class="fas fa-check-circle me-2" style="color: var(--secondary-teal);"></i> بناء جسور بين الثقافات المختلفة.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الدول والتخصصات (Countries and Specializations) - الآن يشمل المعرض الخاص بكل دولة --><section id="specializations" class="py-5">
+            <h2 class="text-center mb-2 fw-bold text-dark">برامجنا الأكاديمية حسب الدول</h2>
+            <p class="text-center mb-5 text-muted lead">اكتشف التخصصات المتاحة في وجهاتنا الرئيسية وشاهد لمحة عن كل دولة.</p>
+            
+            <!-- علامات التبويب (Tabs Navigation) --><ul class="nav nav-tabs justify-content-center mb-4" id="countryTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="sudan-tab" data-bs-toggle="tab" data-bs-target="#sudan" type="button" role="tab" aria-controls="sudan" aria-selected="true">
+                        <!-- تم التغيير: استخدام صورة العلم بدلاً من الأيقونة --><img src="https://i.postimg.cc/SQ5ghDkY/61m-Atj-Pg-HUL.jpg" alt="علم السودان" class="flag-icon"> السودان
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="libya-tab" data-bs-toggle="tab" data-bs-target="#libya" type="button" role="tab" aria-controls="libya" aria-selected="false">
+                        <!-- تم التغيير: استخدام صورة العلم بدلاً من الأيقونة --><img src="https://i.postimg.cc/SQ5ghDkY/61m-Atj-Pg-HUL.jpg" alt="علم ليبيا" class="flag-icon"> ليبيا
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="uzbekistan-tab" data-bs-toggle="tab" data-bs-target="#uzbekistan" type="button" role="tab" aria-controls="uzbekistan" aria-selected="false">
+                        <!-- تم التغيير: استخدام صورة العلم بدلاً من الأيقونة --><img src="https://i.postimg.cc/SQ5ghDkY/61m-Atj-Pg-HUL.jpg" alt="علم أوزبكستان" class="flag-icon"> أوزبكستان
+                    </button>
+                </li>
+            </ul>
+
+            <!-- محتوى علامات التبويب (Tabs Content) --><div class="tab-content" id="countryTabsContent">
+                
+                <!-- محتوى السودان --><div class="tab-pane fade show active" id="sudan" role="tabpanel" aria-labelledby="sudan-tab">
+                    
+                    <h3 class="text-center mb-4 text-secondary">التخصصات المتاحة في السودان</h3>
+                    
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-heartbeat spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">الطب البشري</h5>
+                                    <p class="text-muted small mb-0">فرص دراسية معتمدة عالميًا ومستوى تعليمي متميز.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-tooth spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">طب الأسنان</h5>
+                                    <p class="text-muted small mb-0">تخصصات شاملة في زراعة وتجميل الأسنان.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-pills spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">الصيدلة</h5>
+                                    <p class="text-muted small mb-0">العلوم الصيدلانية السريرية والمختبرية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-laptop-code spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">تقنية المعلومات</h5>
+                                    <p class="text-muted small mb-0">شبكات، أمن معلومات، وتطوير برمجيات.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- معرض صور السودان (9 صور) --><h4 class="text-center mb-4 fw-bold">معرض صور السودان</h4>
+                    <div class="row g-4">
+                         <!-- الصورة 1 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=جامعة+الخرطوم" alt="جامعة في السودان">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">جامعة الخرطوم</h6>
+                                    <p class="small mb-0">إحدى أعرق الجامعات الأفريقية.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- الصورة 2 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=نهر+النيل+السودان" alt="نهر النيل في السودان">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">نهر النيل</h6>
+                                    <p class="small mb-0">جمال الطبيعة في قلب العاصمة.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- الصورة 3 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=مختبر+طبي+السودان" alt="مختبر طبي حديث">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مختبرات طبية متقدمة</h6>
+                                    <p class="small mb-0">تدريب عملي على أحدث الأجهزة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 4 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=قاعة+دراسة+السودان" alt="قاعة دراسة في السودان">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">قاعات دراسية مجهزة</h6>
+                                    <p class="small mb-0">بيئة مثالية للتركيز والتحصيل.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 5 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=طلاب+الخرطوم" alt="طلاب في الخرطوم">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">حياة طلابية نشطة</h6>
+                                    <p class="small mb-0">أنشطة لا منهجية متنوعة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 6 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=مباني+جامعية" alt="مباني جامعية حديثة">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">تصميم معماري عصري</h6>
+                                    <p class="small mb-0">منشآت تخدم العملية التعليمية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 7 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=هندسة+السودان" alt="قسم الهندسة في السودان">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">ورش عمل للهندسة</h6>
+                                    <p class="small mb-0">تدريب عملي مكثف للمهندسين.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 8 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=المستشفى+التعليمي" alt="المستشفى التعليمي">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">المستشفيات التعليمية</h6>
+                                    <p class="small mb-0">تدريب إكلينيكي للطب والأسنان.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 9 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=المناظر+الطبيعية" alt="المناظر الطبيعية في السودان">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مواقع سياحية</h6>
+                                    <p class="small mb-0">استكشف التراث والثقافة.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- محتوى ليبيا --><div class="tab-pane fade" id="libya" role="tabpanel" aria-labelledby="libya-tab">
+                    
+                    <h3 class="text-center mb-4 text-secondary">التخصصات المتاحة في ليبيا</h3>
+                    
+                    <div class="row g-4 mb-5">
+                         <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-microscope spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">الطب البشري</h5>
+                                    <p class="text-muted small mb-0">دراسة مكثفة مع تدريب عملي واسع.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-calculator spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">المحاسبة والتمويل</h5>
+                                    <p class="text-muted small mb-0">إعداد لشهادات مهنية في المحاسبة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-cogs spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">الهندسة الميكانيكية</h5>
+                                    <p class="text-muted small mb-0">برامج متقدمة في التصميم الصناعي.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- معرض صور ليبيا (9 صور) --><h4 class="text-center mb-4 fw-bold">معرض صور ليبيا</h4>
+                    <div class="row g-4">
+                         <!-- الصورة 1 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=جامعة+طرابلس" alt="جامعة في طرابلس">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">جامعة طرابلس</h6>
+                                    <p class="small mb-0">مركز أكاديمي متميز.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- الصورة 2 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=قاعة+محاضرات+ليبيا" alt="قاعة محاضرات في ليبيا">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">قاعات محاضرات حديثة</h6>
+                                    <p class="small mb-0">أحدث التقنيات في التعليم.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- الصورة 3 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=مكتبة+جامعية+ليبيا" alt="مكتبة جامعة في ليبيا">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مكتبات واسعة</h6>
+                                    <p class="small mb-0">توفر جميع المصادر البحثية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 4 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=مركز+أبحاث+ليبيا" alt="مركز أبحاث في ليبيا">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مراكز الأبحاث</h6>
+                                    <p class="small mb-0">دعم الدراسات العليا.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 5 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=سوق+قديم+طرابلس" alt="سوق قديم في طرابلس">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">المدينة القديمة</h6>
+                                    <p class="small mb-0">تراث معماري غني.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 6 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=شاطئ+ليبي" alt="شاطئ ليبي جميل">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">جمال الشواطئ</h6>
+                                    <p class="small mb-0">أماكن للراحة والاسترخاء.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 7 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=طلاب+هندسة" alt="طلاب هندسة يعملون">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">ورش الهندسة</h6>
+                                    <p class="small mb-0">تطبيق عملي للمفاهيم.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 8 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=كلية+الاقتصاد" alt="مبنى كلية الاقتصاد">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مباني الكليات</h6>
+                                    <p class="small mb-0">تصميمات حديثة للكليات.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 9 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=موقع+تاريخي+ليبيا" alt="موقع تاريخي أثري">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">آثار ليبيا</h6>
+                                    <p class="small mb-0">اكتشف الماضي العريق.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- محتوى أوزبكستان --><div class="tab-pane fade" id="uzbekistan" role="tabpanel" aria-labelledby="uzbekistan-tab">
+                    
+                    <h3 class="text-center mb-4 text-secondary">التخصصات المتاحة في أوزبكستان</h3>
+
+                    <div class="row g-4 mb-5">
+                         <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-tooth spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">طب الأسنان</h5>
+                                    <p class="text-muted small mb-0">دراسة بمعايير عالمية في جامعات بخبرة طويلة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-balance-scale spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">القانون الدولي</h5>
+                                    <p class="text-muted small mb-0">تخصصات في القانون التجاري والنزاعات الدولية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="specialization-card p-4 d-flex align-items-center">
+                                <i class="fas fa-chart-line spec-icon"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">إدارة الأعمال</h5>
+                                    <p class="text-muted small mb-0">برامج متخصصة تركز على السوق الآسيوي.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- معرض صور أوزبكستان (9 صور) --><h4 class="text-center mb-4 fw-bold">معرض صور أوزبكستان</h4>
+                    <div class="row g-4">
+                         <!-- الصورة 1 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=طشقند+جامعة" alt="جامعة في طشقند">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">أكاديمية طشقند</h6>
+                                    <p class="small mb-0">مبنى تعليمي حديث.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- الصورة 2 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=ساحة+ريجستان+سمرقند" alt="ساحة ريجستان في سمرقند">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">ساحة ريجستان</h6>
+                                    <p class="small mb-0">تراث تاريخي عالمي.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- الصورة 3 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=قاعة+اجتماعات+أوزبكستان" alt="قاعة اجتماعات للطلاب">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مرافق جامعية</h6>
+                                    <p class="small mb-0">مجهزة للاجتماعات والمؤتمرات.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 4 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=مكتبة+أوزبكستان" alt="مكتبة في أوزبكستان">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مكتبة الجامعة</h6>
+                                    <p class="small mb-0">هدوء وتركيز للدراسة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 5 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="httpsAG://placehold.co/400x200/021a30/ffffff?text=مدينة+بخارى" alt="مدينة بخارى التاريخية">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">سحر مدينة بخارى</h6>
+                                    <p class="small mb-0">عراقة تاريخ طريق الحرير.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 6 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=مركز+أعمال" alt="مركز أعمال عصري">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">مراكز الأعمال</h6>
+                                    <p class="small mb-0">تدريب في بيئة العمل الحقيقية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 7 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=عيادة+أسنان+تعليمية" alt="عيادة أسنان تعليمية">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">عيادات تعليمية</h6>
+                                    <p class="small mb-0">تطبيق عملي لتخصص طب الأسنان.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 8 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/00d2b6/021a30?text=المترو+طشقند" alt="مترو طشقند">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">شبكة مواصلات</h6>
+                                    <p class="small mb-0">سهولة التنقل في العاصمة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- الصورة 9 --><div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="gallery-item">
+                                <img src="https://placehold.co/400x200/021a30/ffffff?text=هندسة+المعمار" alt="هندسة معمارية إسلامية">
+                                <div class="gallery-caption">
+                                    <h6 class="mb-0 fw-bold">الفن المعماري</h6>
+                                    <p class="small mb-0">تصاميم تزين المدن.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- قسم الدعوة للعمل (Call to Action) --><section id="contact" class="text-center py-5 rounded-4 shadow-lg" style="background-color: #f7f7f7;">
+            <h3 class="text-dark mb-4 fw-bold">هل أنت مستعد لبدء الدراسة؟</h3>
+            <p class="lead text-muted">تواصل مع خبرائنا مباشرة عبر صفحة فيسبوك للحصول على التوجيه اللازم.</p>
+            <a href="https://www.facebook.com/Study0fly/" target="_blank" class="btn btn-info btn-lg text-white mt-3" style="background-color: #1877f2; border: none;">
+                <i class="fab fa-facebook-messenger me-2"></i> راسلنا عبر ماسنجر
+            </a>
+        </section>
+
+    </main>
+
+    <!-- الفوتر (Footer) --><footer>
+        <div class="container text-center">
+            <p class="mb-1 fw-bold">Study Fly</p>
+            <p class="small mb-0">سفر الطلاب للدراسة في الخارج.</p>
+            <p class="small mt-2">&copy; 2025 جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle --><!-- مهم لتشغيل خاصية الـ Tabs --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
