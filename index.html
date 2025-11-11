@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Fly - للدراسة الأكاديمية </title>
+    <title>Study Fly - السفر الأكاديمي </title>
     
     <!-- تحميل Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -95,7 +95,8 @@
         <!-- حاوية الجزيئات المتحركة -->
         <div id="tsparticles" class="absolute inset-0 z-0"></div>
         
-        <div class="container mx-auto px-6 py-24 md:py-32 relative z-10 text-center">
+        <!-- === تم تعديل الحشو (padding) هنا - من py-24 إلى py-20 على الشاشات الصغيرة === -->
+        <div class="container mx-auto px-6 py-20 md:py-32 relative z-10 text-center">
             
             <div data-scroll-anim="fade-in-up" class="flex justify-center items-center gap-4 mb-5">
                 <svg class="w-20 h-20 text-[#00d2b6] transform -rotate-30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
@@ -104,7 +105,7 @@
                 <h1 class="text-5xl md:text-7xl font-bold">Study Fly</h1>
             </div>
             
-            <h2 data-scroll-anim="fade-in-up" style="transition-delay: 100ms;" class="text-3xl md:text-4xl font-bold text-gray-200 mb-6">للدراسة الأكاديمية</h2>
+            <h2 data-scroll-anim="fade-in-up" style="transition-delay: 100ms;" class="text-3xl md:text-4xl font-bold text-gray-200 mb-6">السفر الأكاديمي</h2>
             <p data-scroll-anim="fade-in-up" style="transition-delay: 200ms;" class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
                 وجهتك الموثوقة للدراسة في الخارج، نساعدك في تسهيل إجراءات السفر والقبول الجامعي.
             </p>
@@ -128,7 +129,8 @@
     <main class="container mx-auto px-6 py-16 md:py-24">
         
         <!-- قسم الميزات الرئيسية (Features) -->
-        <section class="py-16 bg-slate-50 rounded-3xl -mt-48 relative z-10 shadow-xl">
+        <!-- === تم تعديل الهامش السلبي (negative margin) هنا - أصبح متجاوباً === -->
+        <section class="py-16 bg-slate-50 rounded-3xl -mt-32 md:-mt-48 relative z-10 shadow-xl">
             <div class="container mx-auto px-6">
                 <h2 data-scroll-anim="fade-in-up" class="text-center text-3xl md:text-4xl mb-12 font-bold text-gray-900">
                     لماذا تختار <span class="text-[#00d2b6]">Study Fly</span> ؟
@@ -172,16 +174,16 @@
                     <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">رسالتنا: بناء مستقبل مشرق</h3>
                     <p class="text-xl text-gray-600 mb-8">نؤمن بأن التعليم هو مفتاح التطور. هدفنا هو تذليل الصعاب أمام الطلاب العرب الطموحين لتحقيق أحلامهم الأكاديمية في بيئات دراسية ممتازة.</p>
                     <ul class="space-y-4 text-lg">
-                        <li class="flex items-center"><i class="fas fa-check-circle me-3 text-[#00d2b6] text-xl"></i> توفير فرص تعليم عالية الجودة بأفضل المؤسسات التعليمية العالمية.</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle me-3 text-[#00d2b6] text-xl"></i> توفير بيئة دعم متكاملة تضمن النجاح الأكاديمي والشخصي للطلاب.</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle me-3 text-[#00d2b6] text-xl"></i> المساهمة في خلق جيل من الخريجين القادرين على المنافسة عالمياً.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle me-3 text-[#00d2b6] text-xl"></i> توفير فرص تعليم عالية الجودة.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle me-3 text-[#00d2b6] text-xl"></i> دعم  دائم للطلاب.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle me-3 text-[#00d2b6] text-xl"></i> بناء جسور بين الثقافات المختلفة.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- === قسم الدول والجامعات === -->
-        <section id="specializations" class="w-fit mx-auto py-24 bg-gray-50 rounded-3xl">
+        <section id="specializations" class="py-24 bg-gray-50 rounded-3xl">
             <div class="container mx-auto px-6">
                 <h2 data-scroll-anim="fade-in-up" class="text-center text-3xl md:text-4xl mb-4 font-bold text-gray-900">الجامعات المتاحة حسب الدول</h2>
                 <p data-scroll-anim="fade-in-up" style="transition-delay: 100ms;" class="text-center text-xl text-gray-600 mb-12 max-w-3xl mx-auto">اكتشف الجامعات التي نتعامل معها في وجهاتنا الرئيسية.</p>
@@ -213,7 +215,7 @@
                             <!-- جامعة 1 -->
                             <a href="#" class="university-card-link" data-page-target="uni-khartoum">
                                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                                    <div class="h-48 overflow-hidden"><img src="https://i.postimg.cc/NG7gzdXf/hs.png" alt="جامعة الحصاحيصا" class="w-full h-full object-cover"></div>
+                                    <div class="h-48 overflow-hidden"><img src="https://i.postimg.cc/9MBTNWpv/hs.png" alt="جامعة الحصاحيصا" class="w-full h-full object-cover"></div>
                                     <div class="p-4 text-center"><h5 class="text-xl font-bold text-gray-900">جامعة الحصاحيصا</h5></div>
                                 </div>
                             </a>
@@ -357,17 +359,17 @@
                         </div>
                         <div class="p-3 text-center"><h6 class="font-bold">جامعة الحصاحيصا</h6></div>
                     </div>
-                    <div class="gallery-item-card" data-image-url="https://i.postimg.cc/Y9X0Wj8g/hs3.png" data-caption="شرح احد السكاشن للطلاب">
+                    <div class="gallery-item-card" data-image-url="https://i.postimg.cc/Y9X0Wj8g/hs3.png" data-caption="شرح سكشن للطلاب">
                         <div class="gallery-img-container">
                             <img src="https://i.postimg.cc/Y9X0Wj8g/hs3.png" alt="صورة 2">
                         </div>
-                        <div class="p-3 text-center"><h6 class="font-bold">شرح احد السكاشن للطلاب</h6></div>
+                        <div class="p-3 text-center"><h6 class="font-bold">شرح سكشن للطلاب</h6></div>
                     </div>
-                    <div class="gallery-item-card" data-image-url="https://i.postimg.cc/gjXzLsxp/hs2.png" data-caption="أحد معامل الجامعه">
+                    <div class="gallery-item-card" data-image-url="https://i.postimg.cc/gjXzLsxp/hs2.png" data-caption="أحد المعامل">
                         <div class="gallery-img-container">
                             <img src="https://i.postimg.cc/gjXzLsxp/hs2.png" alt="صورة 3">
                         </div>
-                        <div class="p-3 text-center"><h6 class="font-bold">أحد معامل الجامعه</h6></div>
+                        <div class="p-3 text-center"><h6 class="font-bold">أحد المعامل</h6></div>
                     </div>
                 </div>
             </div>
